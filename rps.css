@@ -75,3 +75,17 @@ img{
     height: 70%;
     max-height: 100%;
 }
+@media (max-width: 768px) {
+    header{
+        height: 80px;
+    }
+
+    #user-options{
+        max-width: 700px;
+        overflow: scroll;
+    }
+    
+    #rock, #paper, #scissor{
+        margin-right: -20px;
+    }
+}
