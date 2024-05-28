@@ -90,12 +90,13 @@ img{
     }
     #paper{
         position: relative;
-        left: -110px;
+        top: -105%;
+        left: 25%;
     }
 
     #scissor{
         position: relative;
-        top: -210px;
-        left: 240px;
+        top: -210%;
+        left: 230%;
     }
 }
