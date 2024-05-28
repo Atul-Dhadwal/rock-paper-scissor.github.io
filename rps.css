@@ -75,6 +75,21 @@ img{
     height: 70%;
     max-height: 100%;
 }
+@media (max-width: 1080px) {
+    #rock{
+        position: relative;
+        left: -30px;
+    }
+    #paper{
+        position: relative;
+        left: -15%;
+    }
+
+    #scissor{
+        position: relative;
+        left: -25%
+    }
+}
 @media (max-width: 768px) {
     header{
         height: 80px;
