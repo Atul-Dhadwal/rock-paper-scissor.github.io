@@ -3,42 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="calculator.css">
+    <title>Rock Paper Scissor game</title>
+    <link rel="stylesheet" href="rps.css">
 </head>
 <body>
     <header>
-        <div class="heading">
-            <p>Calculator</p>
-        </div>
+        <h1>Rock Paper Scissor</h1>
     </header>
     <main>
-        <div class="container">
-            <div class="display" id="display">
-                <div class="small-display"></div>
-                <div class="main-display"></div>
-            </div>
-            <div class="clear"><p>clear</p></div>
-            <div class="keys">
-                <div class="key">1</div>
-                <div class="key">2</div>
-                <div class="key">3</div>
-                <div class="key">+</div>
-                <div class="key">4</div>
-                <div class="key">5</div>
-                <div class="key">6</div>
-                <div class="key">-</div>
-                <div class="key">7</div>
-                <div class="key">8</div>
-                <div class="key">9</div>
-                <div class="key">*</div>
-                <div class="key">0</div>
-                <div class="key">.</div>
-                <div class="key">/</div>
-                <div class="key">=</div>
-            </div>
+        <div id="com-box" class="com-box">
+            <img src="" alt="" id="com-option">
+        </div>
+        <div class="result" id="result">
+            <p id="result-para"></p>
+        </div>
+        <div class="user-box" id="user-box">
+            <img src="" alt="" id="user-option">
+        </div>
+        <div id="user-options">
+            <img src="./images/rock.jpg" alt="rock" id="rock">
+            <img src="./images/paper.jpg" alt="paper" id="paper">
+            <img src="./images/scissor.jpg" alt="scissor" id="scissor">
         </div>
     </main>
-    <script src="calculator.js"></script>
+    <script src="rps.js"></script>
 </body>
 </html>
