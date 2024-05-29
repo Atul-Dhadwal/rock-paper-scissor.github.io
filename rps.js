@@ -1,84 +1,87 @@
-const keys = document.querySelectorAll('.key');
-const display = document.querySelector('.main-display');
-const smallDisplay = document.querySelector('.small-display');
-const clear = document.querySelector('.clear');
-let num1 = 0;
-let num2 = 0;
-let result = 0;
-let operator;
-let textLimit = false;
-let operatorInput = false;
-let firstCalculation = false;
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissor = document.getElementById('scissor');
+const userOption = document.getElementById('user-option');
+const comOption = document.getElementById('com-option');
+const statusPara = document.getElementById('result-para');
+let userSelection;
+let comSelection;
+let status;
 
-function calculation(a, b, o) {
-    switch (o) {
-        case '+':
-            return a + b;
-            
-        case '-':
-            return a - b;
-            
-        case '*':
-            return a * b;
-        
-        case '/':
-            return (b !== 0) ? a / b : 'Error';
-
-        default:
-            return 0;
-    }
+function computer() {
+  switch (Math.floor(Math.random() * 3)) {
+    case 0:
+      comOption.setAttribute('src','./images/rock.jpg');
+      comSelection = 0;
+      break;
+    case 1:
+      comOption.setAttribute('src','./images/paper.jpg');
+      comSelection = 1;
+      break;
+    case 2:
+      comOption.setAttribute('src','./images/scissor.jpg');
+      comSelection = 2;
+      break;  
+  }
 }
 
-clear.addEventListener('click', () => {
-    display.textContent = '';
-    smallDisplay.textContent = '';
-    textLimit = false;
-    operatorInput = false;
-    firstCalculation = false;
-    num1 = 0;
-    num2 = 0;
-    result = 0;
-    operator = '';
-});
+function evaluate() {
+  if (userSelection === 0) {
+    if (comSelection === 0) {
+      status = 'draw';
+    } else if (comSelection === 1) {
+      status = 'lost';
+    } else if (comSelection === 2) {
+      status = 'win';  
+    }
+  } else if (userSelection === 1) {
+    if (comSelection === 0) {
+      status = 'win';  
+    } else if (comSelection === 1) {
+      status = 'draw';
+    } else if (comSelection === 2) {
+      status = 'lost';
+    }
+  } else if (userSelection === 2) {
+    if (comSelection === 0) {
+        status = 'lost';  
+      } else if (comSelection === 1) {
+        status = 'win';
+      } else if (comSelection === 2) {
+        status = 'draw';
+      }
+  }
+  statusPara.innerHTML = status;
+}
 
-Array.from(keys).forEach((key) => {
-    key.addEventListener('click', () => {
-        key.style.animation = 'keystroke 0.2s linear';
-        setInterval(() => {
-            key.style.animation = '';
-        }, 200);
-        if (display.textContent.length > 11) {
-            textLimit = true;
-        } else if(!textLimit) {
-            display.innerHTML += key.innerHTML;
-            if (!isNaN(key.textContent) && !operatorInput) {
-                num1 += Number(key.textContent);
-                num1 *= 10;
-            } else if (num1 !== 0) {
-                if (!isNaN(key.textContent)) {
-                    num2 += Number(key.textContent);
-                    num2 *= 10;
-                }
-            }
-        }
-        if (['+', '-', '*', '/'].includes(key.innerHTML)) {
-            operatorInput = true;
-            textLimit = false;
-            operator = key.innerHTML;
-            display.innerHTML = "";
-            smallDisplay.innerHTML += num1/10 + operator;
-        }
-        if (key.innerHTML === '=') {
-            operatorInput = true;
-            textLimit = false;
-            if (!firstCalculation) {
-                result = calculation(num1/10, num2/10, operator);
-                firstCalculation = true;
-            } else {
-                result = calculation(result, num2/10, operator);
-            }
-            display.textContent = result;
-            smallDisplay.textContent += num2/10 + operator;
-        }
-    });
+function statusColor() {
+  if (status === 'win') {
+    statusPara.style.backgroundColor = 'green';
+  } else if (status === 'lost') {
+    statusPara.style.backgroundColor = 'red';
+  } else {
+    statusPara.style.backgroundColor = 'grey';
+  }
+}
+
+rock.addEventListener('click', () => {
+  userOption.setAttribute('src','./images/rock.jpg');
+  userSelection = 0;
+  computer();
+  evaluate();
+  statusColor();
+});
+paper.addEventListener('click', () => {
+  userOption.setAttribute('src','./images/paper.jpg');
+  userSelection = 1;
+  computer();
+  evaluate();
+  statusColor();
+});
+scissor.addEventListener('click', () => {
+  userOption.setAttribute('src','./images/scissor.jpg');
+  userSelection = 2;
+  computer();
+  evaluate();
+  statusColor();
 });
