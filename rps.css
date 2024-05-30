@@ -1,6 +1,7 @@
 body{
     margin: 0;
-    overflow: scroll;
+    overflow: hidden;
+    scrollbar-width: none;
 }
 header h1{
     width: 300px;
@@ -78,14 +79,14 @@ img{
 @media (max-width: 720px) {
     .user-options{
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-around;
     }
 
     #rock, #paper, #scissor{
         margin: 0% -5%;
     }
 }
-@media (max-width: 420px) {
+@media (max-width: 400px) {
     header{
         height: 80px;
     }
@@ -94,7 +95,19 @@ img{
         width: 100%;
     }
     
-    #rock, #paper, #scissor{
-        margin: 0% -5%;
+    #rock{
+        position: relative;       
+        left: -30px;
+    }
+    
+    #paper{
+        position: relative;
+        left: -90px;
+    }
+
+    #scissor{
+        position: relative;
+        left: 205px;
+        top: -209px;
     }
 }
