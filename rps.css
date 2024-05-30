@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    overflow: hidden;
+    overflow: scroll;
 }
 header h1{
     width: 300px;
